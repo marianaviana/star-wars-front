@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { useEffect, useState } from 'react';
 
-import * as S from './styles'
+import * as S from '../../components/common/privateStyle'
 import Hero from '../../components/layouts/Hero'
 
 const api = 'https://swapi.dev/api/';

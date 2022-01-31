@@ -6,72 +6,59 @@ import * as B from '../../components/common/buttons'
 import * as P from '../../components/common/photo'
 import * as S from '../../components/common/bigCards'
 import Hero from '../../components/layouts/Hero'
+import Loading from '../../components/layouts/Loading'
 
 const api = 'https://swapi.dev/api/';
 
 const CurrentFilm = () => {
   const { id } = useParams();
-  const [loadding, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [episode, setEpisode] = useState([])
-  const [characters, setCharacters] = useState([])
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     const fetchEpisode = async () => {
-        const respFilms = await fetch(`${api}films/${id}?format=json`);
-        const dataFilms =  await respFilms.json();
-        setEpisode(dataFilms);
-        if (loadding) {
-          fetchCharacters(dataFilms);
-        }
+      const respFilms = await fetch(`${api}films/${id}?format=json`);
+      const dataFilms =  await respFilms.json();
+      setEpisode(dataFilms);
+      if (loading) {
+        fetchCharacters(dataFilms);
+      }
     }
 
     const fetchCharacters = async (dataFilms) => {
-      const people = await dataFilms.characters.map((character) => (
-        getItem('/people', character.toString().replace(/[^0-9]/g,''))
-      ))
+      const listPeople = await Promise.all(
+        dataFilms.characters.map((character) => getItem(character))
+      )
+
       setLoading(false);
-      setCharacters(people)
+      setCharacters(listPeople);
     }
 
-    const getItem = async (type, currentId) => {
-      const respItem = await fetch(`${api}${type}/${currentId}?format=json`);
-      const data = await respItem.json();
-      console.log(data)
+    const getItem = async (apiUrl) => {
+      const respItem = await fetch(`${apiUrl}?format=json`);
+      const data = respItem.json();
       return data
     }
 
     fetchEpisode();
-  }, [id, characters, loadding])
-
-
-  const renderPeople = () => {
-    return (
-      <S.List>
-      {characters && characters.map((character, i) => (
-        <S.Item noDots key={i} >{
-          <Link to={`/people/${character.toString().replace(/[^0-9]/g,'')}`}>
-            <B.ButtonGroup><B.Button medium>{character.name}</B.Button></B.ButtonGroup>
-          </Link>}
-        </S.Item>
-      ))}
-    </S.List>
-    )
-  }
+  }, [id, characters, loading])
 
   return (
     <>
-    <Hero />
-      { loadding
+      <Hero />
+      { loading
         ? (
-          <h1>Loadding...</h1>
+          <Loading/>
         ) : (
         <S.SectionItem>
           <S.ContainerItem>
-            <P.Photo
+            <S.Box>
+              <P.Photo
                 src={`/assets/images/episode/${episode.episode_id}.png`}
                 alt={episode.title}
               />
-            <S.BoxDescription>
+              <S.BoxDescription>
               <S.Title>{episode.title}</S.Title>
               <S.Description>{episode.opening_crawl}</S.Description>
               <S.List>
@@ -79,9 +66,22 @@ const CurrentFilm = () => {
                 <S.Item>Producer {episode.producer}</S.Item>
                 <S.Item>Producer {episode.producer}</S.Item>
               </S.List>
-              <S.Title>Characters</S.Title>
-              {renderPeople()}
-            </S.BoxDescription>
+              </S.BoxDescription>
+            </S.Box>
+            <S.Box>
+              <S.BoxColumn full>
+                <S.Title>Characters {characters.length}</S.Title>
+                <S.List noSpaces>
+                  {characters && characters.map((character, i) => (
+                    <S.Item noDots key={i} >{
+                      <Link to={`/people/${character.url.toString().replace(/[^0-9]/g,'')}/${character.name}`}>
+                        <B.ButtonGroup><S.Btn medium>{character.name}</S.Btn></B.ButtonGroup>
+                      </Link>}
+                    </S.Item>
+                  ))}
+                </S.List>
+              </S.BoxColumn>
+            </S.Box>
           </S.ContainerItem>
         </S.SectionItem>
         )
