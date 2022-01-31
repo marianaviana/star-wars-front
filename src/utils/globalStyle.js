@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a, button {
+    color: ${colors.shark};
     cursor: pointer;
     text-decoration: none;
 
