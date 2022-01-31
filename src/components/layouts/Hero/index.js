@@ -16,7 +16,7 @@ const Hero = () => {
     <>
       <S.Header>
         <Link to='/'>
-        <L.Logo small src="/assets/images/logo.png" alt="Logo Star Wars" />
+        <L.Logo small src="/assets/images/logo.webp" alt="Logo Star Wars" />
         </Link>
       </S.Header>
       <S.Navbar>

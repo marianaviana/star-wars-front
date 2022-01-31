@@ -55,7 +55,7 @@ const CurrentFilm = () => {
           <S.ContainerItem>
             <S.Box>
               <P.Photo
-                src={`/assets/images/episode/${episode.episode_id}.png`}
+                src={`/assets/images/episode/${episode.episode_id}.webp`}
                 alt={episode.title}
               />
               <S.BoxDescription>

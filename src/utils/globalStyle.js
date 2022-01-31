@@ -34,7 +34,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a, button {
-    color: ${colors.ripeLemon};
     cursor: pointer;
     text-decoration: none;
 

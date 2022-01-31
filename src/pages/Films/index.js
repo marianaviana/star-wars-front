@@ -37,7 +37,7 @@ const List = () => {
               <Link to={handleUrl(episode.url, episode.title)} key={episode.episode_id}>
                 <S.ItemCard>
                   <img
-                    src={`/assets/images/episode/${episode.episode_id}.png`}
+                    src={`/assets/images/episode/${episode.episode_id}.webp`}
                     alt={episode.title}
                   />
                   <S.TitleButton

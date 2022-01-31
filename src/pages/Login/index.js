@@ -50,7 +50,7 @@ const UserLogin = () => {
       <S.ContainerLogin>
         <S.LoginHeader>
           <Link to="/">
-            <L.Logo src="/assets/images/logo.png" alt="Logo Star Wars" />
+            <L.Logo src="/assets/images/logo.webp" alt="Logo Star Wars" />
           </Link>
           <T.H1>Login</T.H1>
           <T.H2>Please enter your Login and Password</T.H2>
