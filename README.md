@@ -1,3 +1,9 @@
+# Lighthouse
+
+![Lighthouse](https://image.prntscr.com/image/pwEGsaI5QCmJZ9K8LOuWaA.png)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
