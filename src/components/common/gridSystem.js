@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors, media } from '../../utils/variables'
+import { media } from '../../utils/variables'
 
 export const Section = styled.section`
   display: flex;

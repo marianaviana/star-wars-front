@@ -5,8 +5,8 @@ export const Photo = styled.img`
   background-color: ${colors.wodsmoke};
   border-radius: 10px;
   display: flex;
-  height: 304px;
+  height: 206px;
   padding: 14px 17px 17px;
   text-align: center;
-  width: 217px;
+  width: 147.05px;
 `

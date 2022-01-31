@@ -15,11 +15,7 @@ export const Button = styled.button`
   ${({ medium }) => medium && 'font-size: 13px; padding: 14px;'};
 `
 
-export const ButtonGroup = styled.button`
+export const ButtonGroup = styled.div`
   border: none;
   width: 100%;
-
-  > :not(:first-child) {
-    margin-top: 10px;
-  }
 `
