@@ -38,8 +38,8 @@ const UserLogin = () => {
     event.preventDefault();
     const { token } = login(values)
     if (token) {
-      setToken(token)
-      navigate('/')
+      setToken(token);
+      navigate('/');
     }
 
     setValues(initialStates)
