@@ -23,8 +23,9 @@ const login = ({user, password}) => {
 
 const UserLogin = () => {
   const [values, setValues] = useState(initialStates);
+  const [hasError, setHasError] = useState(false);
   const { setToken } = useContext(StoreContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChange = (event) => {
     const { value, name } = event.target;
@@ -34,7 +35,14 @@ const UserLogin = () => {
     })
   }
 
+  const showError = (message) => {
+    return (
+      hasError && <S.Error>{message}</S.Error>
+    )
+  }
+
   const onSubmit = (event) => {
+    setHasError(false);
     event.preventDefault();
     const { token } = login(values)
     if (token) {
@@ -43,6 +51,7 @@ const UserLogin = () => {
     }
 
     setValues(initialStates)
+    setHasError(true);
   }
 
   return (
@@ -72,6 +81,7 @@ const UserLogin = () => {
             onChange={onChange}
             value={values.password}
           />
+          {showError('Invalid username and/or password')}
           <B.Button type="submit">Login</B.Button>
         </S.Form>
       </S.ContainerLogin>

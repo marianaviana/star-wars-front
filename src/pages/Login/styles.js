@@ -46,3 +46,10 @@ export const Input = styled.input`
   font-weight: bold;
   margin-bottom: 20px;
 `
+
+export const Error = styled.span`
+  color: ${colors.torchRed};
+  font-size: 14px;
+  margin-bottom: 20px;
+  text-align: center;
+`

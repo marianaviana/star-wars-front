@@ -1,5 +1,6 @@
 export const colors = {
   black: '#000',
+  torchRed: '#FF003B',
   mercury: '#E5E5E5',
   ripeLemon: '#F0C60F',
   shark: '#1A1B22',

@@ -13,7 +13,7 @@ const api = 'https://swapi.dev/api/';
 const CurrentFilm = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [episode, setEpisode] = useState([])
+  const [episode, setEpisode] = useState([]);
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
